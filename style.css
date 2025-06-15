@@ -19,61 +19,53 @@ body {
   padding: 0 20px;
 }
 
+/* Header - 動画背景 */
 header {
- position: relative; /* video要素を重ねるための基準 */
- height: 90vh;
- overflow: hidden; /* videoがヘッダーの範囲外に溢れないように */
- display: flex;
- justify-content: center;
- align-items: center;
- border-bottom: 1px solid #dcd0c0;
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #dcd0c0;
 }
 
-header h1 {
-  font-size: 3rem;
+header video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+}
+
+.header-content {
+  text-align: center;
   color: white;
-  margin-bottom: 15px;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  z-index: 1;
+}
+
+.header-content h1 {
+  font-size: 3rem;
   font-weight: normal;
   letter-spacing: 1px;
 }
 
-header p {
-  font-size: 1.2rem;
-  color: white;
-}
-header video {
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- object-fit: cover; /* videoをアスペクト比を保ったまま要素全体に表示 */
- z-index: -1; /* videoをテキストより後ろに配置 */
-}
-
-.header-content {
- text-align: center;
- color: white;
- text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
- padding: 20px;
-}
-
-.header-content h1 {
- font-size: 3rem;
- margin-bottom: 15px;
- font-weight: normal;
- letter-spacing: 1px;
-}
-
 .header-content p {
- font-size: 1.2rem;
+  font-size: 1.2rem;
+  margin-top: 15px;
 }
+
 /* Sections General */
 section {
-  padding: 60px 0; 
+  padding: 60px 0;
   border-bottom: 1px solid #eee5da;
 }
-
 section:last-of-type {
   border-bottom: none;
 }
@@ -82,7 +74,7 @@ h2 {
   font-size: 2rem;
   color: #8B5E3C;
   text-align: center;
-  margin-bottom: 50px; 
+  margin-bottom: 50px;
   font-weight: normal;
   position: relative;
 }
@@ -103,132 +95,82 @@ h2::after {
   color: #5c4d43;
 }
 
-/* Menu Section - カードデザイン */
+/* Menu Section */
 .menu-section {
   background-color: #fff;
 }
-
 .menu-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px; 
+  gap: 25px;
 }
-
 .card {
   background: #fdfaf6;
   border: 1px solid #eee5da;
   border-radius: 8px;
   padding: 25px;
-  text-align: center; 
+  text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
-
-.card h3 {
-  font-size: 1.2rem;
-  color: #7a5c58;
-  margin-bottom: 15px;
-}
-
-.card .price {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #8B5E3C;
-  margin-bottom: 15px;
-}
-
-.card .description {
-  font-size: 0.95rem;
-  color: #5c4d43;
-  line-height: 1.7;
-}
+.card h3 { font-size: 1.2rem; color: #7a5c58; margin-bottom: 15px; }
+.card .price { font-size: 1.6rem; font-weight: bold; color: #8B5E3C; margin-bottom: 15px; }
+.card .description { font-size: 0.95rem; color: #5c4d43; line-height: 1.7; }
 
 /* Hours & Access Sections */
-.hours-section p, .access-section p {
-  text-align: center;
-  font-size: 1rem;
-  color: #5c4d43;
-}
-.hours-section p {
-  white-space: pre-line; /* HTMLの改行を反映させる */
-}
-.access-section p {
-  margin-bottom: 20px;
-}
-.map-container {
-  margin-top: 20px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-}
+.hours-section p, .access-section p { text-align: center; font-size: 1rem; color: #5c4d43; }
+.hours-section p { white-space: pre-line; }
+.access-section p { margin-bottom: 20px; }
+.map-container { margin-top: 20px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
 
-/* Reservation Button - フローティング */
+/* Reservation Button */
 .reservation-button {
-  position: fixed; 
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000; 
-  
-  background-color: #ab8974;
-  color: #fff;
-  padding: 15px 30px;
-  text-decoration: none;
-  border-radius: 50px;
-  font-weight: bold;
-  font-size: 1.2rem;
+  position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+  background-color: #ab8974; color: #fff; padding: 15px 30px; text-decoration: none;
+  border-radius: 50px; font-weight: bold; font-size: 1.2rem;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   transition: background-color 0.3s ease, transform 0.2s ease;
   display: inline-block;
 }
-
-.reservation-button:hover {
-  background-color: #997562;
-  transform: translateY(-3px) scale(1.05);
-}
+.reservation-button:hover { background-color: #997562; transform: translateY(-3px) scale(1.05); }
 
 /* Footer */
 footer {
-  text-align: center;
-  background-color: #4a3b32;
-  padding: 40px 20px;
-  color: #dcd0c0;
+  text-align: center; background-color: #4a3b32;
+  padding: 40px 20px; color: #dcd0c0;
 }
-footer p {
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-}
-footer p:last-child {
-  margin-bottom: 0;
-}
-footer a {
-  color: #ece4db;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-footer a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
+footer p { margin-bottom: 10px; font-size: 0.9rem; }
+footer p:last-child { margin-bottom: 0; }
+footer a { color: #ece4db; text-decoration: none; transition: color 0.3s ease; }
+footer a:hover { color: #fff; text-decoration: underline; }
 
-/* Responsive adjustments - スマホ対応 */
+/* ===============================================
+   Responsive adjustments - スマホ対応
+   =============================================== */
 @media (max-width: 768px) {
   header {
-    height: 70vh;
+    height: 65vh; /* スマホでのヘッダーの高さを少し調整 */
   }
-  header h1 {
-    font-size: 2.2rem;
+
+  /* ▼▼▼ スマホでの文字サイズを滑らかに調整 ▼▼▼ */
+  .header-content h1 {
+    /* clamp(最小サイズ, 推奨サイズ, 最大サイズ) */
+    font-size: clamp(2rem, 8vw, 2.5rem); 
   }
-  header p {
-    font-size: 1rem;
+
+  .header-content p {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
   }
+
   h2 {
-    font-size: 1.8rem;
+    font-size: clamp(1.6rem, 6vw, 1.8rem);
   }
+  /* ▲▲▲ ここまで ▲▲▲ */
+
   .reservation-button {
     width: calc(100% - 40px);
     text-align: center;
