@@ -117,6 +117,12 @@ h2::after {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
+/* ▼▼▼ スマホのタップ用にこのコードを追加します ▼▼▼ */
+.card:active {
+  transform: scale(0.98); /* タップ時に少しだけ小さく（98%に）する */
+  transition: transform 0.1s; /* 反応を素早く（0.1秒）する */
+}
+/* ▲▲▲ ここまで ▲▲▲ */
 .card h3 { font-size: 1.2rem; color: #7a5c58; margin-bottom: 15px; }
 .card .price { font-size: 1.6rem; font-weight: bold; color: #8B5E3C; margin-bottom: 15px; }
 .card .description { font-size: 0.95rem; color: #5c4d43; line-height: 1.7; }
