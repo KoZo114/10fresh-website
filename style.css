@@ -181,7 +181,7 @@ footer a:hover { color: #fff; text-decoration: underline; }
 /* ▼▼▼ このコードを追加します ▼▼▼ */
   footer {
     /* 固定予約ボタンと重ならないように、フッターの下に余白を追加 */
-    padding-bottom: 90px; 
+    padding-bottom: 120px; 
   }
   /* ▲▲▲ ここまで ▲▲▲ */
   .reservation-button {
