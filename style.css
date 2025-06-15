@@ -19,23 +19,14 @@ body {
   padding: 0 20px;
 }
 
-/* Header - ヒーローイメージ */
 header {
-  /* ▼▼▼【重要】ここにヘッダーに使いたい画像のパスを指定してください▼▼▼ */
-  background-image: url('https://images.unsplash.com/photo-1544161515-cfd836b080e7?q=80&w=1887&auto=format&fit=crop'); /* 仮の画像を設定しています */
-  /* ▲▲▲【重要】ここにヘッダーに使いたい画像のパスを指定してください▲▲▲ */
-  height: 90vh; 
-  background-size: cover;
-  background-position: center;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
-  color: white; 
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); 
-  border-bottom: 1px solid #dcd0c0;
+ position: relative; /* video要素を重ねるための基準 */
+ height: 90vh;
+ overflow: hidden; /* videoがヘッダーの範囲外に溢れないように */
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border-bottom: 1px solid #dcd0c0;
 }
 
 header h1 {
@@ -50,7 +41,33 @@ header p {
   font-size: 1.2rem;
   color: white;
 }
+header video {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ object-fit: cover; /* videoをアスペクト比を保ったまま要素全体に表示 */
+ z-index: -1; /* videoをテキストより後ろに配置 */
+}
 
+.header-content {
+ text-align: center;
+ color: white;
+ text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+ padding: 20px;
+}
+
+.header-content h1 {
+ font-size: 3rem;
+ margin-bottom: 15px;
+ font-weight: normal;
+ letter-spacing: 1px;
+}
+
+.header-content p {
+ font-size: 1.2rem;
+}
 /* Sections General */
 section {
   padding: 60px 0; 
