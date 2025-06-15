@@ -126,7 +126,12 @@ h2::after {
 .hours-section p { white-space: pre-line; }
 .access-section p { margin-bottom: 20px; }
 .map-container { margin-top: 20px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
-
+/* ▼▼▼ この3行を追加します ▼▼▼ */
+.map-container iframe {
+  width: 100% !important; /* 横幅を強制的に100%にする */
+  display: block;      /* 隙間なく表示するためのおまじない */
+}
+/* ▲▲▲ ここまで ▲▲▲ */
 /* Reservation Button */
 .reservation-button {
   position: fixed; bottom: 20px; right: 20px; z-index: 1000;
