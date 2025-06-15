@@ -178,7 +178,12 @@ footer a:hover { color: #fff; text-decoration: underline; }
   .salon-introduction p {
   font-size: 0.90rem; 
 }
-
+/* ▼▼▼ このコードを追加します ▼▼▼ */
+  footer {
+    /* 固定予約ボタンと重ならないように、フッターの下に余白を追加 */
+    padding-bottom: 80px; 
+  }
+  /* ▲▲▲ ここまで ▲▲▲ */
   .reservation-button {
     width: calc(100% - 40px);
     text-align: center;
