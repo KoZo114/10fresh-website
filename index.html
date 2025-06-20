@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
 </head>
 <body>
   <header>
@@ -22,7 +25,7 @@
   </header>
 
   <div class="container">
-    <section class="salon-introduction">
+    <section class="salon-introduction" data-aos="fade-up" data-aos-duration="1000">
       <h2>サロン紹介</h2>
       <p>練馬駅徒歩3分の優先予約制プライベートサロン。<br>
       ヘッドスパを中心に、心と頭を深く癒します。</p>
@@ -85,5 +88,9 @@
     </div>
     <p class="copyright">© 10FRESH練馬店</p>
   </footer>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
