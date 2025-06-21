@@ -78,7 +78,16 @@ h2 {
   font-weight: normal;
   position: relative;
 }
-
+/* ▼▼▼ このコードを追加します ▼▼▼ */
+.h2-sub {
+  display: block; /* 改行させる */
+  font-size: 1rem;  /* 少し小さくする */
+  font-weight: normal; /* 太字にしない */
+  color: var(--accent-color-1); /* アクセントカラーを適用 */
+  margin-top: 8px; /* 上の英語との余白 */
+  letter-spacing: 1px; /* 文字間を少し広げる */
+}
+/* ▲▲▲ ここまで ▲▲▲ */
 h2::after {
   content: '';
   display: block;
