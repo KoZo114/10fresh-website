@@ -253,6 +253,25 @@ footer {
 .contact-item:last-child { margin-bottom: 0; }
 footer a { color: var(--footer-link-color); text-decoration: none; transition: color 0.3s ease; }
 footer a:hover { color: white; text-decoration: underline; }
+
+/* ▼▼▼ この部分をここに追加します ▼▼▼ */
+.line-reservation-button {
+  display: inline-block;
+  background-color: #06C755; /* LINEの公式グリーン */
+  color: white !important; /* 文字色を白に強制 */
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none; /* 下線を消す */
+  transition: background-color 0.2s;
+}
+
+.line-reservation-button:hover {
+  background-color: #05a546; /* ホバー時に少し濃い緑に */
+  text-decoration: none; /* ホバー時も下線を消す */
+}
+/* ▲▲▲ ここまで ▲▲▲ */
+
 .copyright { font-size: 0.9rem; }
 
 /* Responsive adjustments */
