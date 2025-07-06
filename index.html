@@ -62,8 +62,17 @@
     .global-nav a:hover::after {
       width: 100%; /* マウスを乗せたら幅を100%に */
     }
+    
+    /* ▼▼▼ メニュー下の案内文用のスタイルを追加 ▼▼▼ */
+    .menu-note {
+      text-align: center;
+      margin-top: 40px; /* カードとの間に余白を設ける */
+      font-size: 0.9rem; /* 少し小さめの文字サイズ */
+      color: var(--main-text-color, #4a3b32);
+    }
+    /* ▲▲▲ スタイルの追加ここまで ▲▲▲ */
   </style>
-  </head>
+</head>
 <body>
   <header class="video-bg">
     <video autoplay loop muted playsinline poster="poster.jpg">
@@ -84,6 +93,7 @@
     <a href="#hours">営業時間</a>
     <a href="#access">アクセス</a>
   </nav>
+
   <div class="container">
     <section id="salon" class="salon-introduction" data-aos="fade-up">
       <h2>サロン紹介</h2>
@@ -134,7 +144,11 @@
           <p class="description">頭の筋肉を引き上げることで、お顔のリフトアップ効果が期待できます。特別な日の前にもおすすめです。</p>
         </div>
       </div>
-    </section>
+
+      <p class="menu-note">
+        その他のメニューはホットペッパーをご覧いただくか、<br>詳しくはご来店の際にお気軽にお尋ねください。
+      </p>
+      </section>
 
     <section id="voice" class="testimonials-section" data-aos="fade-up">
       <h2>VOICE<span class="h2-sub">- お客様の声 -</span></h2>
@@ -207,5 +221,6 @@
       }
     });
   </script>
-  </body>
+
+</body>
 </html>
