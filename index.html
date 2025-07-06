@@ -20,55 +20,77 @@
       padding: 15px 0;
       text-align: center;
       z-index: 1000; /* 他の要素より手前に表示 */
-      transition: background-color 0.4s ease, box-shadow 0.4s ease; /* 背景色と影の変化を滑らかに */
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
     }
 
     /* スクロールした後のナビゲーションメニューのスタイル */
     .global-nav.scrolled {
-      background-color: rgba(253, 250, 246, 0.95); /* 半透明の背景色（var(--main-bg-color)に近い色） */
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* 薄い影を付けて立体感を出す */
+      background-color: rgba(253, 250, 246, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
 
     /* ナビゲーションのリンクのスタイル */
     .global-nav a {
-      position: relative; /* 下線アニメーションのための基準位置 */
+      position: relative;
       text-decoration: none;
-      color: var(--heading-color, #8B5E3C); /* CSS変数がなければデフォルト色を指定 */
+      color: var(--heading-color, #8B5E3C);
       margin: 0 20px;
       font-weight: bold;
-      padding-bottom: 5px; /* 下線とのスペースを確保 */
+      padding-bottom: 5px;
       transition: color 0.3s;
     }
 
-    /* 下線のアニメーション（初期状態） */
     .global-nav a::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 0; /* 最初は幅0で見えない */
+      width: 0;
       height: 1px;
       background-color: var(--accent-color-1, #c0a080);
-      transition: width 0.3s ease; /* 幅の変化を滑らかに */
+      transition: width 0.3s ease;
     }
 
-    /* マウスを乗せた時のリンクのスタイル */
     .global-nav a:hover {
       color: var(--main-text-color, #4a3b32);
     }
     
-    /* マウスを乗せた時の下線のアニメーション */
     .global-nav a:hover::after {
-      width: 100%; /* マウスを乗せたら幅を100%に */
+      width: 100%;
     }
     
-    /* ▼▼▼ メニュー下の案内文用のスタイルを追加 ▼▼▼ */
     .menu-note {
       text-align: center;
-      margin-top: 40px; /* カードとの間に余白を設ける */
-      font-size: 0.9rem; /* 少し小さめの文字サイズ */
+      margin-top: 40px;
+      font-size: 0.9rem;
       color: var(--main-text-color, #4a3b32);
+    }
+    
+    /* ▼▼▼ サロン紹介の画像コンテナのスタイルを追加 ▼▼▼ */
+    .salon-image-container {
+      display: flex; /* 画像を横並びにする */
+      gap: 20px; /* 画像と画像の間の余白 */
+      margin-top: 40px; /* 上の文章との余白 */
+    }
+    .salon-image-container img {
+      width: 100%; /* 横幅を均等に分ける */
+      border-radius: 8px; /* 角を少し丸める */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* 影を付ける */
+      object-fit: cover; /* 画像の比率を保ったまま表示 */
+      height: 280px; /*高さを固定（お好みで調整）*/
+    }
+    /* ▲▲▲ スタイルの追加ここまで ▲▲▲ */
+    
+    /* ▼▼▼ スマホ用のスタイルを追加 ▼▼▼ */
+    @media (max-width: 600px) {
+      .salon-image-container {
+        flex-direction: column; /* スマホでは縦並びにする */
+        gap: 15px;
+      }
+      .salon-image-container img {
+        height: auto; /* スマホでは高さの固定を解除 */
+      }
     }
     /* ▲▲▲ スタイルの追加ここまで ▲▲▲ */
   </style>
@@ -99,8 +121,12 @@
       <h2>サロン紹介</h2>
       <p>練馬駅徒歩3分の優先予約制プライベートサロン。<br>
       ヘッドスパを中心に、心と頭を深く癒します。</p>
-    </section>
 
+      <div class="salon-image-container">
+        <img src="shop1.PNG" alt="サロン看板" data-aos="fade-up" data-aos-delay="200">
+        <img src="shop2.PNG" alt="サロンの店内の様子" data-aos="fade-up" data-aos-delay="300">
+      </div>
+    </section>
     <section id="profile" class="profile-section" data-aos="fade-up">
       <h2>施術者紹介</h2>
       <div class="profile-container">
@@ -148,7 +174,7 @@
       <p class="menu-note">
         その他のメニューはホットペッパーをご覧いただくか、<br>詳しくはご来店の際にお気軽にお尋ねください。
       </p>
-      </section>
+    </section>
 
     <section id="voice" class="testimonials-section" data-aos="fade-up">
       <h2>VOICE<span class="h2-sub">- お客様の声 -</span></h2>
@@ -202,21 +228,18 @@
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({
+        once: true, // アニメーションを1回だけ実行する
+        duration: 800, // アニメーションの時間
+    });
   </script>
 
   <script>
-    // 'global-nav'というクラス名がついた要素（ナビゲーションバー）を取得します
     const nav = document.querySelector('.global-nav');
-
-    // ページがスクロールされるたびに実行される処理を設定します
     window.addEventListener('scroll', () => {
-      // 垂直方向（Y軸）に50px以上スクロールされたかどうかをチェックします
       if (window.scrollY > 50) {
-        // 50px以上スクロールされたら、nav要素に'scrolled'というクラスを追加します
         nav.classList.add('scrolled');
       } else {
-        // スクロールが50px未満の場合は、nav要素から'scrolled'クラスを削除します
         nav.classList.remove('scrolled');
       }
     });
