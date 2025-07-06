@@ -13,22 +13,54 @@
   <style>
     /* ナビゲーションメニュー全体のスタイル */
     .global-nav {
-      background-color: #f8f8f8; /* 背景色 */
-      padding: 10px 0;
+      position: sticky; /* スクロールに追従させる */
+      top: 0;
+      width: 100%;
+      background-color: transparent; /* 初期状態では背景を透明に */
+      padding: 15px 0;
       text-align: center;
-      border-bottom: 1px solid #ddd;
+      z-index: 1000; /* 他の要素より手前に表示 */
+      transition: background-color 0.4s ease, box-shadow 0.4s ease; /* 背景色と影の変化を滑らかに */
     }
+
+    /* スクロールした後のナビゲーションメニューのスタイル */
+    .global-nav.scrolled {
+      background-color: rgba(253, 250, 246, 0.95); /* 半透明の背景色（var(--main-bg-color)に近い色） */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* 薄い影を付けて立体感を出す */
+    }
+
     /* ナビゲーションのリンクのスタイル */
     .global-nav a {
-      text-decoration: none; /* 下線を消す */
-      color: #333; /* 文字色 */
-      margin: 0 15px; /* リンクの間の余白 */
+      position: relative; /* 下線アニメーションのための基準位置 */
+      text-decoration: none;
+      color: var(--heading-color, #8B5E3C); /* CSS変数がなければデフォルト色を指定 */
+      margin: 0 20px;
       font-weight: bold;
-      transition: color 0.3s; /* 色が変わる際のアニメーション */
+      padding-bottom: 5px; /* 下線とのスペースを確保 */
+      transition: color 0.3s;
     }
+
+    /* 下線のアニメーション（初期状態） */
+    .global-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0; /* 最初は幅0で見えない */
+      height: 1px;
+      background-color: var(--accent-color-1, #c0a080);
+      transition: width 0.3s ease; /* 幅の変化を滑らかに */
+    }
+
     /* マウスを乗せた時のリンクのスタイル */
     .global-nav a:hover {
-      color: #a08c6c; /* マウスを乗せた時の文字色 */
+      color: var(--main-text-color, #4a3b32);
+    }
+    
+    /* マウスを乗せた時の下線のアニメーション */
+    .global-nav a:hover::after {
+      width: 100%; /* マウスを乗せたら幅を100%に */
     }
   </style>
   </head>
@@ -158,5 +190,22 @@
   <script>
     AOS.init();
   </script>
-</body>
+
+  <script>
+    // 'global-nav'というクラス名がついた要素（ナビゲーションバー）を取得します
+    const nav = document.querySelector('.global-nav');
+
+    // ページがスクロールされるたびに実行される処理を設定します
+    window.addEventListener('scroll', () => {
+      // 垂直方向（Y軸）に50px以上スクロールされたかどうかをチェックします
+      if (window.scrollY > 50) {
+        // 50px以上スクロールされたら、nav要素に'scrolled'というクラスを追加します
+        nav.classList.add('scrolled');
+      } else {
+        // スクロールが50px未満の場合は、nav要素から'scrolled'クラスを削除します
+        nav.classList.remove('scrolled');
+      }
+    });
+  </script>
+  </body>
 </html>
